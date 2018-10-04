@@ -1,7 +1,10 @@
-﻿namespace CrossMatrix.Model.Services.Abstract
+﻿using CrossMatrix.Model.Models;
+
+namespace CrossMatrix.Model.Services.Abstract
 {
 	public interface IMatrixService
 	{
-		int GetPluses(int[,] matrix);
+		MatrixModel GetModel(MatrixModel model);
+		int GetNumberOfPluses(string matrix);
 	}
 }

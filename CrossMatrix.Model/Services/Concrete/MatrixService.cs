@@ -1,74 +1,56 @@
-﻿using CrossMatrix.Model.Services.Abstract;
+﻿using CrossMatrix.Model.Models;
+using CrossMatrix.Model.Services.Abstract;
 using System;
 
 namespace CrossMatrix.Model.Services.Concrete
 {
 	public class MatrixService : IMatrixService
 	{
-		private int counter = 0;
-		private int[,] matrix;
+		private readonly IOldService _matrixService;
+		private readonly IParserStringToMatrixService _parserStringToMatrix;
 
-		public int GetPluses(int[,] _matrix)
+		public MatrixService(IOldService matrixService, IParserStringToMatrixService parserStringToMatrix)
 		{
-			matrix = _matrix;
-			int rows = matrix.GetUpperBound(0) + 1;
-			int columns = matrix.Length / rows;
-
-			for (int y = 1; y < rows - 1; y++)
-			{
-				for (int x = 1; x < columns - 1; x++)
-				{
-					if (matrix[y, x] == 1)
-					{
-						IsCenterOfPlus(x, y, 1);
-					}
-				}
-			}
-			return counter;
+			_matrixService = matrixService;
+			_parserStringToMatrix = parserStringToMatrix;
 		}
-
-		private void IsCenterOfPlus(int x, int y, int r/*Radius*/)
+		public MatrixModel GetModel(MatrixModel model)
 		{
+			if (model == null || string.IsNullOrWhiteSpace(model.MatrixString))
+			{
+				model = InitSeed(model);
+			}
+			model.InvalidFeedback = "";
 			try
 			{
-				if (
-				matrix[y, x + r] == 1 &&
-				matrix[y, x - r] == 1 &&
-				matrix[y + r, x] == 1 &&
-				matrix[y - r, x] == 1)
-				{
-					CheckingForZeros(x, y, r);
-				}
-			}
-			catch (Exception)
-			{
-				return;
-			}
-		} 
+				int[,] matrix = _parserStringToMatrix.Parse(model.MatrixString);
 
-		private void CheckingForZeros(int x, int y, int r) 
+				model.PlusesСounter = _matrixService.GetPluses(matrix);
+			}
+			catch (Exception e)
+			{
+				model.InvalidFeedback = e.Message;
+				model.PlusesСounter = 0;
+			}
+
+			return model;
+		}
+
+		public int GetNumberOfPluses(string matrix)
 		{
-			for (int i = y - r; i <= y + r; i++)
+			throw new NotImplementedException();
+		}
+
+		private MatrixModel InitSeed(MatrixModel model)
+		{
+
+			string newLine = Environment.NewLine;
+			model = new MatrixModel
 			{
-				if (i == y) { continue; }
-
-				if (matrix[i, x + r] != 0 || matrix[i, x - r] != 0)
-				{
-					return;
-				}
-			}
-
-			for (int j = x - r; j <= x + r; j++)
-			{
-				if (j == x) { continue; }
-
-				if (matrix[y + r, j] != 0 || matrix[y - r, j] != 0)
-				{
-					return;
-				}
-			}
-			counter++;
-			IsCenterOfPlus(x, y, r + 1); /*Recursion*/
+				MatrixString = string.Format("010010{0}111111{0}010010{0}010010{0}111111{0}010010", newLine),
+				PlusesСounter = 0
+			};
+			return model;
 		}
 	}
 }

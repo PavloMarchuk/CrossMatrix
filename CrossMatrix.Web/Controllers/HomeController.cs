@@ -8,9 +8,9 @@ namespace CrossMatrix.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IMainService _mainService;
+		private readonly IMatrixService _mainService;
 
-		public HomeController(IMainService mainService)
+		public HomeController(IMatrixService mainService)
 		{
 			_mainService = mainService;
 		}
