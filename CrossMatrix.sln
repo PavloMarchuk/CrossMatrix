@@ -3,9 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3ADC8F25-179A-491D-8BA0-51F684079277}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{B8110C2C-2C63-4128-960A-EBF2E8ECD800}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2AB5B29A-2C25-43A7-B49D-99195EC2C307}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossMatrix.Web", "CrossMatrix.Web\CrossMatrix.Web.csproj", "{471975B0-66C6-4D45-A7F1-E2B7FD67528A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossMatrix.Model", "CrossMatrix.Model\CrossMatrix.Model.csproj", "{C72DAD7A-CB55-4EED-966C-93BA8ABD795B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{471975B0-66C6-4D45-A7F1-E2B7FD67528A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471975B0-66C6-4D45-A7F1-E2B7FD67528A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471975B0-66C6-4D45-A7F1-E2B7FD67528A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471975B0-66C6-4D45-A7F1-E2B7FD67528A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72DAD7A-CB55-4EED-966C-93BA8ABD795B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72DAD7A-CB55-4EED-966C-93BA8ABD795B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72DAD7A-CB55-4EED-966C-93BA8ABD795B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72DAD7A-CB55-4EED-966C-93BA8ABD795B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{471975B0-66C6-4D45-A7F1-E2B7FD67528A} = {3ADC8F25-179A-491D-8BA0-51F684079277}
+		{C72DAD7A-CB55-4EED-966C-93BA8ABD795B} = {B8110C2C-2C63-4128-960A-EBF2E8ECD800}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8DC1B96-99A0-495E-9677-63747052B0EF}
