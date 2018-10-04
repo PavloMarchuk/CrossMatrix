@@ -20,7 +20,7 @@ namespace CrossMatrix.Model.Services.Concrete
 			{
 				model = InitSeed(model);
 			}
-
+			model.InvalidFeedback = "";
 			try
 			{
 				int[,] matrix = _parserStringToMatrix.Parse(model.MatrixString);
@@ -29,7 +29,7 @@ namespace CrossMatrix.Model.Services.Concrete
 			}
 			catch (Exception e)
 			{
-				model.MatrixString = e.Message;
+				model.InvalidFeedback = e.Message;
 				model.PlusesСounter = 0;
 			}
 

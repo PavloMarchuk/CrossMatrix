@@ -35,3 +35,12 @@ body {
         display: none;
     }
 }
+
+.invalid-feedback {
+	margin-top: .25rem;
+	margin-bottom: .95rem;
+	color: #dc3545;
+	border: solid;
+	border-color: red;
+	border-radius: 5px;
+}

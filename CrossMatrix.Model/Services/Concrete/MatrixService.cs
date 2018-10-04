@@ -7,7 +7,7 @@ namespace CrossMatrix.Model.Services.Concrete
 	{
 		private int counter = 0;
 		private int[,] matrix;
-		
+
 		public int GetPluses(int[,] _matrix)
 		{
 			matrix = _matrix;
@@ -24,7 +24,7 @@ namespace CrossMatrix.Model.Services.Concrete
 					}
 				}
 			}
-			return counter; 
+			return counter;
 		}
 
 		private void IsCenterPlus(int x, int y, int r/*Radius*/)
@@ -35,21 +35,16 @@ namespace CrossMatrix.Model.Services.Concrete
 				matrix[y, x + r] == 1 &&
 				matrix[y, x - r] == 1 &&
 				matrix[y + r, x] == 1 &&
-				matrix[y - r, x] == 1 &&
-
-				matrix[y, x + r -1] == 1 &&
-				matrix[y, x - r +1] == 1 &&
-				matrix[y + r -1, x] == 1 &&
-				matrix[y - r +1, x] == 1 )
+				matrix[y - r, x] == 1 )
 				{
 					counter++;
-					IsCenterPlus(x, y, r + 2); /*Recursion*/
+					IsCenterPlus(x, y, r + 1); 
 				}
 			}
 			catch (Exception)
 			{
 				return;
-			}			
+			}
 		}
 	}
 }
