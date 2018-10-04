@@ -42,7 +42,7 @@ namespace CrossMatrix.Model.Services.Concrete
 			}
 			catch (Exception)
 			{
-				throw new FormatException("Convert.ToInt32(string) Exception");
+				throw new FormatException("Matrix is not correct");
 			}
 
 			return list;

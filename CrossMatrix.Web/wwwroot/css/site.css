@@ -16,6 +16,7 @@ body {
 .carousel-caption p {
 	font-size: 20px;
 	line-height: 1.4;
+	text-shadow: 0 2px 3px rgba(0, 0, 0, .7) !important;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
@@ -47,4 +48,8 @@ body {
 
 .blue-caption {
 	color: blue !important;
+}
+
+.examples {
+	margin-bottom: 30px;
 }
