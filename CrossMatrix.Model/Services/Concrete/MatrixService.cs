@@ -20,38 +20,33 @@ namespace CrossMatrix.Model.Services.Concrete
 				{
 					if (matrix[y, x] == 1)
 					{
-						IsCenterPlus(x, y, 1);
+						IsCenterOfPlus(x, y, 1);
 					}
 				}
 			}
 			return counter;
 		}
 
-		private void IsCenterPlus(int x, int y, int r/*Radius*/)
+		private void IsCenterOfPlus(int x, int y, int r/*Radius*/)
 		{
 			try
 			{
-				CheckFor1(x, y, r);
+				if (
+				matrix[y, x + r] == 1 &&
+				matrix[y, x - r] == 1 &&
+				matrix[y + r, x] == 1 &&
+				matrix[y - r, x] == 1)
+				{
+					CheckingForZeros(x, y, r);
+				}
 			}
 			catch (Exception)
 			{
 				return;
 			}
-		}
+		} 
 
-		private void CheckFor1(int x, int y, int r)
-		{
-			if (
-				matrix[y, x + r] == 1 &&
-				matrix[y, x - r] == 1 &&
-				matrix[y + r, x] == 1 &&
-				matrix[y - r, x] == 1)
-			{
-				CheckFor0(x, y, r);
-			}
-		}
-
-		private void CheckFor0(int x, int y, int r)
+		private void CheckingForZeros(int x, int y, int r) 
 		{
 			for (int i = y - r; i <= y + r; i++)
 			{
@@ -73,7 +68,7 @@ namespace CrossMatrix.Model.Services.Concrete
 				}
 			}
 			counter++;
-			IsCenterPlus(x, y, r + 1);
+			IsCenterOfPlus(x, y, r + 1); /*Recursion*/
 		}
 	}
 }
