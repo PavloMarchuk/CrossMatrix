@@ -1,6 +1,5 @@
 ﻿using CrossMatrix.Model.Services.Abstract;
 using System;
-using System.Drawing;
 
 namespace CrossMatrix.Model.Services.Concrete
 {
@@ -8,22 +7,7 @@ namespace CrossMatrix.Model.Services.Concrete
 	{
 		private int counter = 0;
 		private int[,] matrix;
-		public int GetSeeded()
-		{
-			int[,] seeded =
-			{
-				{ 0,0,0,1,0,0,0,0},
-				{ 0,0,0,1,0,0,0,0},
-				{ 0,0,0,1,0,0,0,0},
-				{ 1,1,1,1,1,1,1,1},
-				{ 0,0,0,1,0,0,0,0},
-				{ 0,0,0,1,0,0,1,0},
-				{ 0,0,0,1,0,1,1,1},
-				{ 0,0,0,1,0,0,1,0},
-			};
-			return GetPluses(seeded);
-		}
-
+		
 		public int GetPluses(int[,] _matrix)
 		{
 			matrix = _matrix;

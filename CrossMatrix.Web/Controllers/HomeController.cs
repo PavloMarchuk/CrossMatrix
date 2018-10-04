@@ -8,15 +8,15 @@ namespace CrossMatrix.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IMatrixService _matrixService;
-		public HomeController(IMatrixService matrixService)
+		private readonly IMainService _mainService;
+
+		public HomeController(IMainService mainService)
 		{
-			_matrixService = matrixService;
+			_mainService = mainService;
 		}
-		public IActionResult Index()
+		public IActionResult Index(MatrixModel model)
 		{
-			MatrixModel model = new MatrixModel();
-			model.PlusesСounter = _matrixService.GetSeeded();
+			model  = _mainService.GetModel(model);
 			return View(model);
 		}
 
