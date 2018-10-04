@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using CrossMatrix.Model.Models;
+using CrossMatrix.Model.Services.Abstract;
 using CrossMatrix.Web.Models;
-using CrossMatrix.Model.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace CrossMatrix.Web.Controllers
 {
 	public class HomeController : Controller
 	{
+		private readonly IMatrixService _matrixService;
+		public HomeController(IMatrixService matrixService)
+		{
+			_matrixService = matrixService;
+		}
 		public IActionResult Index()
 		{
 			MatrixModel model = new MatrixModel();
+			model.PlusesСounter = _matrixService.GetSeeded();
 			return View(model);
 		}
 
