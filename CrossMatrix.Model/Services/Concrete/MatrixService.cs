@@ -31,20 +31,49 @@ namespace CrossMatrix.Model.Services.Concrete
 		{
 			try
 			{
-				if (
-				matrix[y, x + r] == 1 &&
-				matrix[y, x - r] == 1 &&
-				matrix[y + r, x] == 1 &&
-				matrix[y - r, x] == 1 )
-				{
-					counter++;
-					IsCenterPlus(x, y, r + 1); 
-				}
+				CheckFor1(x, y, r);
 			}
 			catch (Exception)
 			{
 				return;
 			}
+		}
+
+		private void CheckFor1(int x, int y, int r)
+		{
+			if (
+				matrix[y, x + r] == 1 &&
+				matrix[y, x - r] == 1 &&
+				matrix[y + r, x] == 1 &&
+				matrix[y - r, x] == 1)
+			{
+				CheckFor0(x, y, r);
+			}
+		}
+
+		private void CheckFor0(int x, int y, int r)
+		{
+			for (int i = y - r; i <= y + r; i++)
+			{
+				if (i == y) { continue; }
+
+				if (matrix[i, x + r] != 0 || matrix[i, x - r] != 0)
+				{
+					return;
+				}
+			}
+
+			for (int j = x - r; j <= x + r; j++)
+			{
+				if (j == x) { continue; }
+
+				if (matrix[y + r, j] != 0 || matrix[y - r, j] != 0)
+				{
+					return;
+				}
+			}
+			counter++;
+			IsCenterPlus(x, y, r + 1);
 		}
 	}
 }
