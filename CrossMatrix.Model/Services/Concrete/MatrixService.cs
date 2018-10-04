@@ -1,6 +1,5 @@
 ﻿using CrossMatrix.Model.Services.Abstract;
 using System;
-using System.Drawing;
 
 namespace CrossMatrix.Model.Services.Concrete
 {
@@ -8,21 +7,6 @@ namespace CrossMatrix.Model.Services.Concrete
 	{
 		private int counter = 0;
 		private int[,] matrix;
-		public int GetSeeded()
-		{
-			int[,] seeded =
-			{
-				{ 0,0,0,1,0,0,0,0},
-				{ 0,0,0,1,0,0,0,0},
-				{ 0,0,0,1,0,0,0,0},
-				{ 1,1,1,1,1,1,1,1},
-				{ 0,0,0,1,0,0,0,0},
-				{ 0,0,0,1,0,0,1,0},
-				{ 0,0,0,1,0,1,1,1},
-				{ 0,0,0,1,0,0,1,0},
-			};
-			return GetPluses(seeded);
-		}
 
 		public int GetPluses(int[,] _matrix)
 		{
@@ -40,32 +24,56 @@ namespace CrossMatrix.Model.Services.Concrete
 					}
 				}
 			}
-			return counter; 
+			return counter;
 		}
 
 		private void IsCenterPlus(int x, int y, int r/*Radius*/)
 		{
 			try
 			{
-				if (
-				matrix[y, x + r] == 1 &&
-				matrix[y, x - r] == 1 &&
-				matrix[y + r, x] == 1 &&
-				matrix[y - r, x] == 1 &&
-
-				matrix[y, x + r -1] == 1 &&
-				matrix[y, x - r +1] == 1 &&
-				matrix[y + r -1, x] == 1 &&
-				matrix[y - r +1, x] == 1 )
-				{
-					counter++;
-					IsCenterPlus(x, y, r + 2); /*Recursion*/
-				}
+				CheckFor1(x, y, r);
 			}
 			catch (Exception)
 			{
 				return;
-			}			
+			}
+		}
+
+		private void CheckFor1(int x, int y, int r)
+		{
+			if (
+				matrix[y, x + r] == 1 &&
+				matrix[y, x - r] == 1 &&
+				matrix[y + r, x] == 1 &&
+				matrix[y - r, x] == 1)
+			{
+				CheckFor0(x, y, r);
+			}
+		}
+
+		private void CheckFor0(int x, int y, int r)
+		{
+			for (int i = y - r; i <= y + r; i++)
+			{
+				if (i == y) { continue; }
+
+				if (matrix[i, x + r] != 0 || matrix[i, x - r] != 0)
+				{
+					return;
+				}
+			}
+
+			for (int j = x - r; j <= x + r; j++)
+			{
+				if (j == x) { continue; }
+
+				if (matrix[y + r, j] != 0 || matrix[y - r, j] != 0)
+				{
+					return;
+				}
+			}
+			counter++;
+			IsCenterPlus(x, y, r + 1);
 		}
 	}
 }

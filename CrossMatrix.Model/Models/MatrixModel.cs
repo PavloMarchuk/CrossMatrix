@@ -4,5 +4,6 @@
 	{
 		public string MatrixString { get; set; }
 		public int PlusesСounter { get; set; }
+		public string InvalidFeedback { get; set; }
 	}
 }

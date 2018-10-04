@@ -2,7 +2,6 @@
 {
 	public interface IMatrixService
 	{
-		int GetSeeded();
 		int GetPluses(int[,] matrix);
 	}
 }
