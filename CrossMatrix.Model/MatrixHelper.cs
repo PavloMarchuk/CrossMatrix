@@ -12,11 +12,13 @@ namespace CrossMatrix.Model
 			{
 				throw new FormatException("String is empty or too short");
 			}
+			text = text.Replace(" ", "");
 
 			if (text.IndexOf(Environment.NewLine) < 3)
 			{
 				throw new FormatException("String have no line breaks");
 			}
+
 
 			int[][] list = ToIntArray(text);
 			int[,] matrix = ToMultidimensional(list);
