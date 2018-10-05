@@ -30,7 +30,6 @@ namespace CrossMatrix.Web
 
 			// Services
 			services.AddTransient<IOldService, OldService>();
-			services.AddTransient<IParserStringToMatrixService, ParserStringToMatrixService>();
 			services.AddTransient<IMatrixService, MatrixService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

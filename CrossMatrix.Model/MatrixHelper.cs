@@ -1,16 +1,13 @@
-﻿using CrossMatrix.Model.Services.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace CrossMatrix.Model.Services.Concrete
+namespace CrossMatrix.Model
 {
-	public class ParserStringToMatrixService : IParserStringToMatrixService
+	public static class MatrixHelper
 	{
-		public int[,] Parse(string text)
+		public static int[,] Parse(string text)
 		{
-
 			if (string.IsNullOrWhiteSpace(text) | text.Length < 9)
 			{
 				throw new FormatException("String is empty or too short");
@@ -27,12 +24,12 @@ namespace CrossMatrix.Model.Services.Concrete
 			return matrix;
 		}
 
-		private int[][] ToIntArray(string text)
+		private static int[][] ToIntArray(string text)
 		{
 			text = text.Trim();
 			char[] newLine = Environment.NewLine.ToCharArray();
 			List<string> stringsList = text.Split(newLine).ToList();
-			stringsList.RemoveAll(s=> s.Length<3);
+			stringsList.RemoveAll(s => s.Length < 3);
 			char[][] rows = stringsList.Select(row => row.ToCharArray()).ToArray();
 
 			int[][] list;
@@ -48,7 +45,7 @@ namespace CrossMatrix.Model.Services.Concrete
 			return list;
 		}
 
-		private int[,] ToMultidimensional(int[][] list)
+		private static int[,] ToMultidimensional(int[][] list)
 		{
 			int arrayWidth = list.GetUpperBound(0) + 1;
 			int[,] matrix = new int[arrayWidth, arrayWidth];
