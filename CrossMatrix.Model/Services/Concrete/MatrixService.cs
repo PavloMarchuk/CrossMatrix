@@ -11,13 +11,12 @@ namespace CrossMatrix.Model.Services.Concrete
 		public int GetNumberOfPluses(string matrixString)
 		{
 			matrix = MatrixHelper.Parse(matrixString);
-			CountPluses(matrix); //Refuc
+			CountPluses();
 			return counter;
 		}
 
-		private void CountPluses(int[,] _matrix)
+		private void CountPluses()
 		{
-			matrix = _matrix;
 			int rows = matrix.GetUpperBound(0) + 1;
 			int columns = matrix.Length / rows;
 

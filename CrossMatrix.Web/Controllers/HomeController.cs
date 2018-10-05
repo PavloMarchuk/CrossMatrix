@@ -17,8 +17,6 @@ namespace CrossMatrix.Web.Controllers
 		}
 		public IActionResult Index(MatrixModel model)
 		{
-			//model  = _matrixService.GetModel(model);
-
 			if (model == null || string.IsNullOrWhiteSpace(model.MatrixString))
 			{
 				model = new MatrixModel
