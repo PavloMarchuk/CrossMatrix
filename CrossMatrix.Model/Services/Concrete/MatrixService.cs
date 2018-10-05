@@ -7,7 +7,7 @@ namespace CrossMatrix.Model.Services.Concrete
 	{
 		private int counter = 0;
 		private int[,] matrix;
-
+		
 		public int GetNumberOfPluses(string matrixString)
 		{
 			matrix = MatrixHelper.Parse(matrixString);
