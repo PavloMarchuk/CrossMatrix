@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossMatrix.Model", "CrossM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossMatrix.Tests.Model", "CrossMatrix.Tests.Model\CrossMatrix.Tests.Model.csproj", "{CB060AB5-27B6-4ABC-BDB6-E11664B71595}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossMatrix.Tests.Web", "CrossMatrix.Tests.Web\CrossMatrix.Tests.Web.csproj", "{78A2A437-FFAE-4E2D-8BD9-8AF668881D5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CB060AB5-27B6-4ABC-BDB6-E11664B71595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB060AB5-27B6-4ABC-BDB6-E11664B71595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB060AB5-27B6-4ABC-BDB6-E11664B71595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A2A437-FFAE-4E2D-8BD9-8AF668881D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A2A437-FFAE-4E2D-8BD9-8AF668881D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A2A437-FFAE-4E2D-8BD9-8AF668881D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A2A437-FFAE-4E2D-8BD9-8AF668881D5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{471975B0-66C6-4D45-A7F1-E2B7FD67528A} = {3ADC8F25-179A-491D-8BA0-51F684079277}
 		{C72DAD7A-CB55-4EED-966C-93BA8ABD795B} = {B8110C2C-2C63-4128-960A-EBF2E8ECD800}
 		{CB060AB5-27B6-4ABC-BDB6-E11664B71595} = {2AB5B29A-2C25-43A7-B49D-99195EC2C307}
+		{78A2A437-FFAE-4E2D-8BD9-8AF668881D5A} = {2AB5B29A-2C25-43A7-B49D-99195EC2C307}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8DC1B96-99A0-495E-9677-63747052B0EF}
