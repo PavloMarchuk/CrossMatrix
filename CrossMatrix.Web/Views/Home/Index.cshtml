@@ -5,7 +5,7 @@
 
 <div class="container">
 	<h2>Input your Matrix</h2>
-	<form asp-controller="Home" asp-action="Index" method="get">
+	<form asp-controller="Home" asp-action="Index" method="post">
 		<div class="form-group">
 			<label asp-for="@Model.MatrixString"></label>
 			<textarea asp-for="@Model.MatrixString" class="form-control" wrap="off" rows="10" cols="10" placeholder="for Matrix">

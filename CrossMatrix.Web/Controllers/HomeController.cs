@@ -15,13 +15,28 @@ namespace CrossMatrix.Web.Controllers
 		{
 			_matrixService = matrixService;
 		}
+
+		[HttpGet]
+		public IActionResult Index()
+		{
+			MatrixModel model = new MatrixModel
+			{
+				MatrixString = string.Format("010{0}111{0}010", Environment.NewLine),
+				PlusesСounter = 0,
+				InvalidFeedback = ""
+			};
+
+			return View(model);
+		}
+
+		[HttpPost]
 		public IActionResult Index(MatrixModel model)
 		{
 			if (model == null || string.IsNullOrWhiteSpace(model.MatrixString))
 			{
 				model = new MatrixModel
 				{
-					MatrixString = string.Format("010{0}111{0}010", Environment.NewLine),
+					MatrixString = "",
 					PlusesСounter = 0,
 					InvalidFeedback = ""
 				};
