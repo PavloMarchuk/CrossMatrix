@@ -22,7 +22,7 @@ namespace CrossMatrix.Web.Controllers
 			MatrixModel model = new MatrixModel
 			{
 				MatrixString = string.Format("010{0}111{0}010", Environment.NewLine),
-				PlusesСounter = 0,
+				PlusesСounter = 1,
 				InvalidFeedback = ""
 			};
 

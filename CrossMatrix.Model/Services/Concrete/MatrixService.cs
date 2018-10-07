@@ -1,5 +1,6 @@
 ﻿using CrossMatrix.Model.Services.Abstract;
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace CrossMatrix.Model.Services.Concrete
@@ -11,8 +12,8 @@ namespace CrossMatrix.Model.Services.Concrete
 
 		public int GetNumberOfPluses(string matrixString)
 		{
-			matrix = MatrixHelper.Parse(matrixString);
-			CountPluses();
+			//matrix = MatrixHelper.Parse(matrixString);
+			//CountPluses();
 
 			//return counter;
 			int newCount = ArturGetNumberOfPluses(matrixString);
@@ -32,8 +33,8 @@ namespace CrossMatrix.Model.Services.Concrete
 		private int ArthurCountPluses(int[][] matrix, int width)
 		{
 			int count = 0;
-			int START_PLUSES_SIZE = 3;
-			int PLUSES_SIZE_INCREMENT = 2;
+			const int START_PLUSES_SIZE = 3;
+			const int PLUSES_SIZE_INCREMENT = 2;
 
 			for (int size = START_PLUSES_SIZE; size < width + 1; size += PLUSES_SIZE_INCREMENT)
 			{
@@ -41,24 +42,30 @@ namespace CrossMatrix.Model.Services.Concrete
 				{
 					for (int x = 0; x < width - size + 1; x++)
 					{
-						//МЕДІАНА ГАВНО!!!
-						int medianaIndex = size / 2;
-						if (matrix[medianaIndex][medianaIndex] == 1)
+						int radius = size / 2;
+						int Y_MedianaIndex = y + radius;
+						int X_MedianaIndex = x + radius;
+						int expextedElementSuma = 2 * size - 1;
+
+						int actualElementSuma = 0;
+
+						for (int i = 0; i < size; i++)
 						{
-							for (int i = 0; i < size; i++)
+							actualElementSuma += matrix[y + i].Skip(x).Take(size).Sum();
+
+							if (!(matrix[y + i][X_MedianaIndex] == 1 && matrix[Y_MedianaIndex][x + i] == 1))
 							{
-								if (matrix[i][medianaIndex + x] == 1 || matrix[medianaIndex + y][i] == 1)
-
-									//TODO  CheckingForZeros
-
-
-									count++;
+								actualElementSuma = -1;
+								break;
 							}
+						}
+						if (expextedElementSuma == actualElementSuma)
+						{
+							count++;
 						}
 					}
 				}
 			}
-
 			return count;
 		}
 
