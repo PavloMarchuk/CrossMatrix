@@ -38,7 +38,7 @@ namespace CrossMatrix.Web.Controllers
 				{
 					MatrixString = "",
 					PlusesСounter = 0,
-					InvalidFeedback = ""
+					InvalidFeedback = "Matrix is void"
 				};
 			}
 

@@ -84,33 +84,5 @@ namespace CrossMatrix.Tests.Model.MatrixServiceTests
 			//assert
 			Assert.AreEqual(expected, actual);
 		}
-
-
-
-		[DataTestMethod]
-		public void ThrowFormatExceptionWhenStringIsShort()
-		{
-			//arrange
-			string matrixString = string.Format("001");
-
-			//act
-			FormatException exception = Assert.ThrowsException<FormatException>(() => _matrixService.GetNumberOfPluses(matrixString));
-
-			//assert
-			Assert.IsNotNull(exception);
-		}
-
-		[DataTestMethod]
-		public void ThrowFormatExceptionWhenMatrixContainsLetters()
-		{
-			//arrange
-			string matrixString = string.Format("0qwerty1");
-
-			//act
-			FormatException exception = Assert.ThrowsException<FormatException>(() => _matrixService.GetNumberOfPluses(matrixString));
-
-			//assert
-			Assert.IsNotNull(exception);
-		}
 	}
 }
