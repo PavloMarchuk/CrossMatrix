@@ -40,6 +40,7 @@ namespace CrossMatrix.Web.Controllers
 					PlusesСounter = 0,
 					InvalidFeedback = "Matrix is void"
 				};
+				return View(model);
 			}
 
 			try
