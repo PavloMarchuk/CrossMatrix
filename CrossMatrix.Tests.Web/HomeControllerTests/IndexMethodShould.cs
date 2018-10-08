@@ -34,7 +34,7 @@ namespace CrossMatrix.Tests.Web.HomeControllerTests
 		public void ReturnViewResultWhenModelIsValid()
 		{
 			// Arrange
-			MatrixModel model = new MatrixModel
+			ResponseModel model = new ResponseModel
 			{
 				MatrixString = string.Format("010{0}111{0}010", Environment.NewLine),
 				PlusesСounter = 0,

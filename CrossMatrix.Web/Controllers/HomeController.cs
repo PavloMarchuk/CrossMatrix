@@ -19,27 +19,21 @@ namespace CrossMatrix.Web.Controllers
 		[HttpGet]
 		public IActionResult Index()
 		{
-			MatrixModel model = new MatrixModel
-			{
-				MatrixString = string.Format("010{0}111{0}010", Environment.NewLine),
-				PlusesСounter = 1,
-				InvalidFeedback = ""
-			};
-
-			return View(model);
+			return View(new ResponseModel { InvalidFeedback ="", MatrixString = "", PlusesСounter =0});
 		}
 
 		[HttpPost]
-		public IActionResult Index(MatrixModel model)
+		public IActionResult Index(string matrixString)
 		{
-			if (model == null || string.IsNullOrWhiteSpace(model.MatrixString))
+			ResponseModel model = new ResponseModel
 			{
-				model = new MatrixModel
-				{
-					MatrixString = "",
-					PlusesСounter = 0,
-					InvalidFeedback = "Matrix is void"
-				};
+				MatrixString = matrixString,
+				PlusesСounter = 0,
+				InvalidFeedback = ""
+			};
+			if (string.IsNullOrWhiteSpace(matrixString))
+			{
+				model.InvalidFeedback = "Matrix is void";
 				return View(model);
 			}
 
@@ -50,7 +44,6 @@ namespace CrossMatrix.Web.Controllers
 			catch (Exception e)
 			{
 				model.InvalidFeedback = e.Message;
-				model.PlusesСounter = 0;
 			}
 			return View(model);
 		}
